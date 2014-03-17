@@ -1,0 +1,70 @@
+html, body {
+	height: 100%;
+}
+
+div.wrap {
+/* 	height: 100%; */
+	min-height: 100%;
+}
+
+pre.code {
+	background-color: #ffffff;
+}
+
+header h1 {
+	background: url('../images/zipper_large.png') no-repeat top center;
+	text-indent:-9999px;
+}
+
+main {
+	padding-bottom: 130px;
+}
+
+main div.asside h1 {
+	margin-top: 0px;
+}
+
+main div.row {
+	display: table;
+}
+
+main div.col-md-6, main div.col-md-5 {
+	display: table-cell;
+}
+
+main .download span {
+	vertical-align: middle;
+	display: inline-block;
+	margin-left: 30px;
+}
+
+main .download .fa {
+	line-height: 90px;
+}
+
+main .download  [class^="fa-"], main .download  [class*=" fa-"] {
+	vertical-align: middle;
+}
+
+footer {
+	position: relative;
+	height: 130px;
+	margin-top: -130px;
+/* 	clear: both; */
+	padding-top: 20px;
+}
+
+footer.jumbotron {
+	padding: 20px;
+	margin-bottom: 0px;
+	background-color: #000000;
+	color: #ffffff;
+}
+
+footer.jumbotron p {
+	margin-bottom: 0px;
+}
+
+footer ul {
+	list-style: none;
+}
