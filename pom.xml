@@ -14,7 +14,7 @@
 	<inceptionYear>2014</inceptionYear>
 	<url>http://zipper.a1dutch.co.uk</url>
 	<properties>
-		<github.global.server>github</github.global.server>
+		<github.global.server>github.com</github.global.server>
 	</properties>
 	<scm>
 		<developerConnection>scm:git:https://github.com/a1dutch/Zipper.git</developerConnection>
