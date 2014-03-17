@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zipper</title>
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/zipper.css" rel="stylesheet">
+</head>
+<body>
+	<div class="wrap">
+		<header class="jumbotron">
+			<div class="container">
+				<h1 class="zipper">Zipper</h1>
+				<h2 class="text-center">Fluent Archive Utilities </h2>
+			</div>
+		</header>
+		<main class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<p><strong>Zipper</strong> offers a simple, modern and easy to use fluent api for creating and unpacking zip archives.</p>
+				<p>See the examples below</p>
+				<br />
+				<p>Unzip archive to current directory</p>
+				<pre>Unzipper.archive("path/to/archive.zip").unzip();</pre>
+				<p>Unzip archive to specified directory</p>
+				<pre>Unzipper.archive("path/to/archive.zip").to("/output/directory").unzip();</pre>
+				<p>Create an archive from specified directory</p>
+				<pre>Zipper.archive("path/to/archive.zip").directory("/a/directory").zip();</pre>
+				<p>Create an archive from specified directories</p>
+				<pre>Zipper.archive("path/to/archive.zip").directory("/tmp").directory("/opt").zip();</pre>
+				<p>Create an archive from specified file</p>
+				<pre>Unzipper.archive("path/to/archive.zip").file("/tmp/myfile").unzip();</pre>
+			</div>
+			<div class="asside col-md-4 well">
+				<h1>Download</h1>
+				<h2>Maven</h2>
+				<p>Add the following dependency to you project pom.xml dependencies section</p>
+				<pre class="code">&lt;dependency&gt;
+    &lt;groupId&gt;uk.co.a1dutch.zipper&lt;/groupId&gt;
+    &lt;artifactId&gt;zipper&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+				<h2>Offline Distribution</h2>
+				<p>Download an offline distribution, containing all the required jars and documentation.</p>
+				<button class="download btn btn-lg btn-block btn-success">
+					<i class="fa fa-4x fa-cloud-download"></i><span>Download<br>Offline Distribution
+					</span>
+				</button>
+			</div>
+		</div>
+		</main>
+	</div>
+	<footer class="jumbotron">
+		<div class="container">
+			<div class="row text-center">
+				<ul class="list-inline ">
+<!-- 					<li class="text-left"> -->
+<!-- 						<ul> -->
+<!-- 							<li><a href=""><i class="fa fa-bars"></i> Javadocs</a></li> -->
+<!-- 						</ul> -->
+<!-- 					</li> -->
+					<li class="text-left">
+						<ul>
+							<li><a href="http://github.com/a1dutch/Zipper"><i class="fa fa-github-square"></i> Github Project</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="row text-center">
+				<p>&copy; 2014 Andrew Holland</p>
+			</div>
+		</div>
+	</footer>
+	<script src="js/jqueryjs"></script>
+	<script src="js/highlight.js"></script>
+	<script src="js/bootstrap.js"></script>
+</body>
+</html>

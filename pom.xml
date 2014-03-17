@@ -13,6 +13,9 @@
 	<description>Fluent archive utilities</description>
 	<inceptionYear>2014</inceptionYear>
 	<url>http://zipper.a1dutch.co.uk</url>
+	<properties>
+		<github.global.server>github</github.global.server>
+	</properties>
 	<scm>
 		<developerConnection>scm:git:https://github.com/a1dutch/Zipper.git</developerConnection>
 		<connection>scm:git:https://github.com/a1dutch/Zipper.git</connection>
@@ -50,4 +53,53 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/site</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/site</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.9</version>
+				<configuration>
+					<message>Creating site for ${project.version}</message>
+					<repositoryOwner>a1dutch</repositoryOwner>
+					<repositoryName>zipper</repositoryName>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
