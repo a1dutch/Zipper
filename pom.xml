@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>uk.co.a1dutch.zipper</groupId>
 	<artifactId>zipper</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>zipper</name>
 	<description>Fluent archive utilities</description>
 	<inceptionYear>2014</inceptionYear>
@@ -20,7 +20,7 @@
 		<developerConnection>scm:git:https://github.com/a1dutch/Zipper.git</developerConnection>
 		<connection>scm:git:https://github.com/a1dutch/Zipper.git</connection>
 		<url>https://github.com/a1dutch/Zipper</url>
-	  <tag>zipper-1.0.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<dependencies>
 		<dependency>
