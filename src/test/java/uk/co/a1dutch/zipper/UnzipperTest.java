@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import uk.co.a1dutch.zipper.Unzipper;
 
-public class TestUnzipper {
+public class UnzipperTest {
     
     @Before
     public void setup() {
