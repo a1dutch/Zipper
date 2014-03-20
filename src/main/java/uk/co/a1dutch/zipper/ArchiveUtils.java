@@ -4,6 +4,7 @@ package uk.co.a1dutch.zipper;
  * Utility class with common archive functions.
  *  
  * @author a1dutch 
+ * @since 1.1.0
  */
 final class ArchiveUtils {
     /**

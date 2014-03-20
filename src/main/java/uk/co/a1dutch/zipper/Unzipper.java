@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
  * </pre>
  * 
  * @author a1dutch
+ * @since 1.0.0
  */
 public class Unzipper {
 

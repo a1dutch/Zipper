@@ -37,6 +37,7 @@ import org.slf4j.LoggerFactory;
  * </p>
  * 
  * @author a1dutch
+ * @since 1.1.0
  */
 public class Zipper {
     /**
