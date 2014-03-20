@@ -24,7 +24,13 @@ package uk.co.a1dutch.zipper;
  */
 @SuppressWarnings("serial")
 public class UnzipperRuntimeException extends RuntimeException {
-    public UnzipperRuntimeException(String message, Throwable throwable) {
-        super(message, throwable);
+    /**
+     * Constructs a new unzipper runtime exception with the given message and cause.
+     * 
+     * @param message the detailed message.
+     * @param cause the cause.
+     */
+    public UnzipperRuntimeException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

@@ -24,15 +24,32 @@ package uk.co.a1dutch.zipper;
  */
 @SuppressWarnings("serial")
 public class ZipperRuntimeException extends RuntimeException {
-    public ZipperRuntimeException(String message, Throwable throwable) {
-        super(message, throwable);
+    
+    /**
+     * Constructs a new zipper runtime exception with the given message and cause.
+     * 
+     * @param message the detailed message.
+     * @param cause the cause.
+     */
+    public ZipperRuntimeException(String message, Throwable cause) {
+        super(message, cause);
     }
 
+    /**
+     * Constructs a new zipper runtime exception with the given message.
+     * 
+     * @param message the detailed message.
+     */
     public ZipperRuntimeException(String message) {
         super(message);
     }
 
-    public ZipperRuntimeException(Throwable throwable) {
-        super(throwable.getMessage(), throwable);
+    /**
+     * Constructs a new zipper runtime exception with the given cause.
+     * 
+     * @param cause the cause.
+     */
+    public ZipperRuntimeException(Throwable cause) {
+        super(cause.getMessage(), cause);
     }
 }
