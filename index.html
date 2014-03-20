@@ -31,9 +31,9 @@
 				<p>Create an archive from specified directory</p>
 				<pre>Zipper.archive("path/to/archive.zip").directory("/a/directory").zip();</pre>
 				<p>Create an archive from specified directories</p>
-				<pre>Zipper.archive("path/to/archive.zip").directory("/tmp").directory("/opt").zip();</pre>
+				<pre>Zipper.archive("path/to/archive.zip").directories("/tmp", "/opt").zip();</pre>
 				<p>Create an archive from specified file</p>
-				<pre>Unzipper.archive("path/to/archive.zip").file("/tmp/myfile").unzip();</pre>
+				<pre>Zipper.archive("path/to/archive.zip").file("/tmp/myfile").unzip();</pre>
 			</div>
 			<div class="asside col-md-4 well">
 				<h1>Download</h1>
