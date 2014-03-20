@@ -6,34 +6,44 @@ import static org.junit.Assert.*;
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import uk.co.a1dutch.zipper.Unzipper;
 
-public class UnzipperTest {
+/**
+ * @author a1dutch
+ */
+public class UnzipperTest extends AbstractArchiverTest {
+
+    private static final String OUTPUT_DIR = TEST_DATA_DIR + "/unzipper";
     
-    @Before
-    public void setup() {
-        FileUtils.deleteQuietly(new File("target/output/a"));
-    }
-    
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
     @Test
     public void shouldUnzipArchive() throws Exception {
-        Unzipper.archive("target/test-classes/archives/a.zip").to("target/output/a").unzip();
-        assertThat(new File("target/output/a").exists(), is(equalTo(true)));
-        assertThat(FileUtils.readFileToString(new File("target/output/a/a/a.txt")), is(equalTo("a.txt")));
-        assertThat(FileUtils.readFileToString(new File("target/output/a/a.txt")), is(equalTo("a.txt")));
-        assertThat(FileUtils.readFileToString(new File("target/output/a/b.txt")), is(equalTo("b.txt")));
+        Unzipper.archive(ARCHIVES_DIR + "/a.zip").to(OUTPUT_DIR + "/a").unzip();
+        assertThat(new File(OUTPUT_DIR + "/a").exists(), is(equalTo(true)));
+        assertThat(FileUtils.readFileToString(new File(OUTPUT_DIR + "/a/a/a.txt")), is(equalTo("a.txt")));
+        assertThat(FileUtils.readFileToString(new File(OUTPUT_DIR + "/a/a.txt")), is(equalTo("a.txt")));
+        assertThat(FileUtils.readFileToString(new File(OUTPUT_DIR + "/a/b.txt")), is(equalTo("b.txt")));
     }
-    
-    @Test(expected=RuntimeException.class)
+
+    @Test
     public void shouldThrowRuntimeErrorWhenUnzipBadArchive() throws Exception {
-        Unzipper.archive("target/test-classes/archives/b.zip").to("target/output/b").unzip();
+        exception.expect(UnzipperRuntimeException.class);
+        exception.expectMessage(equalTo("Failed to unzip archive"));
+        
+        Unzipper.archive(ARCHIVES_DIR + "/faulty.zip").to(OUTPUT_DIR + "/b").unzip();
     }
-    
-    @Test(expected=RuntimeException.class)
+
+    @Test
     public void shouldThrowRuntimeErrorWhenUnzipNoneExistentArchive() throws Exception {
-        Unzipper.archive("target/test-classes/archives/z.zip").to("target/output/z").unzip();
+        exception.expect(UnzipperRuntimeException.class);
+        exception.expectMessage(equalTo("Failed to unzip archive"));
+        
+        Unzipper.archive(ARCHIVES_DIR + "/z.zip").to(OUTPUT_DIR + "/z").unzip();
     }
 }

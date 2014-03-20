@@ -1,5 +1,7 @@
 package uk.co.a1dutch.zipper;
 
+import static uk.co.a1dutch.zipper.ArchiveUtils.*;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -13,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class offers a fluent api to decompress and unpackage zip archive.
+ * This class offers a fluent api to decompress and unpackage a zip archive.
  * <p>
  * The following code shows how to unzip an archive:
  * </p>
@@ -21,6 +23,8 @@ import org.slf4j.LoggerFactory;
  * <pre>
  * Unzipper.archive(myArchive).to(outputDirectory).unzip();
  * </pre>
+ * 
+ * @author a1dutch
  */
 public class Unzipper {
 
@@ -32,7 +36,8 @@ public class Unzipper {
     /**
      * Returns a new Unzipper for the given archive.
      * 
-     * @param archive the archive to be unzipped.
+     * @param archive
+     *            the archive to be unzipped.
      * 
      * @return a {@link Unzipper} used to collect all parameters.
      */
@@ -43,7 +48,8 @@ public class Unzipper {
     /**
      * Returns a new Unzipper for the given archive.
      * 
-     * @param archive the archive to be unzipped.
+     * @param archive
+     *            the archive to be unzipped.
      * 
      * @return a {@link Unzipper} used to collect all parameters.
      */
@@ -58,7 +64,8 @@ public class Unzipper {
     /**
      * Sets the directory where the archive should be unzipped too.
      * 
-     * @param outputDirectory the directory where to unzip the archive too.
+     * @param outputDirectory
+     *            the directory where to unzip the archive too.
      * 
      * @return a {@link Unzipper} used to collect all parameters.
      */
@@ -70,12 +77,13 @@ public class Unzipper {
     /**
      * Sets the directory where the archive should be unzipped too.
      * 
-     * @param outputDirectory the directory where to unzip the archive too.
+     * @param outputDirectory
+     *            the directory where to unzip the archive too.
      * 
      * @return a {@link Unzipper} used to collect all parameters.
      */
     public Unzipper to(String outputDirectory) {
-        return to(new File(normalise(outputDirectory)));
+        return to(new File(normalisePath(outputDirectory)));
     }
 
     /**
@@ -83,38 +91,35 @@ public class Unzipper {
      */
     public void unzip() {
         try {
-            log.info("unzipping archive: " + archive + " into " + outputDirectory);
+            log.info("unzipping archive: {} into {}", archive, outputDirectory);
             ZipFile zip = new ZipFile(archive);
             for (Enumeration<? extends ZipEntry> elements = zip.entries(); elements.hasMoreElements();) {
                 ZipEntry entry = elements.nextElement();
 
                 String outputName = outputDirectory + "/" + entry.getName();
-                log.debug("unzipping entry: " + entry.getName());
+                if (log.isDebugEnabled()) {
+                    log.debug("unzipping entry: {}", entry.getName());
+                }
 
                 if (entry.isDirectory()) {
                     new File(outputName).mkdirs();
                     continue;
                 }
 
-                BufferedInputStream bis = new BufferedInputStream(zip.getInputStream(entry));
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(outputName)));
-                byte[] buffer = new byte[1024];
-                int read = 0;
-                while ((read = bis.read(buffer)) != -1) {
-                    bos.write(buffer, 0, read);
+                try (BufferedInputStream bis = new BufferedInputStream(zip.getInputStream(entry));
+                        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(outputName)))) {
+                    byte[] buffer = new byte[1024];
+                    int read = 0;
+                    while ((read = bis.read(buffer)) != -1) {
+                        bos.write(buffer, 0, read);
+                    }
                 }
-                bis.close();
-                bos.close();
             }
-            log.info("unzipped " + zip.size() + " entries.");
+            log.info("unzipped {} entries", zip.size());
             zip.close();
         } catch (IOException e) {
-            log.error("failed unzipping archive, " + e.getMessage());
-            throw new RuntimeException("Failed to unzip archive, " + e.getMessage());
+            log.error("failed unzipping archive, {}", e.getMessage());
+            throw new UnzipperRuntimeException("Failed to unzip archive", e);
         }
-    }
-
-    private String normalise(String outputDirectory) {
-        return outputDirectory.replaceAll("\\\\", "/");
     }
 }
