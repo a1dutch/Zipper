@@ -146,13 +146,13 @@
 					<serverId>sonatype-nexus-staging</serverId>
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 					<stagingProfileId>393b2bec5afbb5</stagingProfileId>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 				<executions>
 					<execution>
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
-							<goal>close</goal>
 						</goals>
 					</execution>
 				</executions>
