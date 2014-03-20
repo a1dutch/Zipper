@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>uk.co.a1dutch</groupId>
@@ -8,7 +7,7 @@
 	</parent>
 	<groupId>uk.co.a1dutch.zipper</groupId>
 	<artifactId>zipper</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<name>Zipper Archive Utilities</name>
 	<description>Fluent archive utilities</description>
 	<inceptionYear>2014</inceptionYear>
@@ -21,7 +20,7 @@
 		<developerConnection>scm:git:https://github.com/a1dutch/Zipper.git</developerConnection>
 		<connection>scm:git:https://github.com/a1dutch/Zipper.git</connection>
 		<url>https://github.com/a1dutch/Zipper</url>
-		<tag>HEAD</tag>
+		<tag>zipper-1.1.0</tag>
 	</scm>
 	<dependencies>
 		<dependency>
