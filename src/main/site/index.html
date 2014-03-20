@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zipper</title>
-<link href="css/highlight.css" rel="stylesheet">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/zipper.css" rel="stylesheet">
+<title>Zipper - Fluent Java Archive Utilities</title>
+<link href="./css/highlight.css" rel="stylesheet">
+<link href="./css/bootstrap.css" rel="stylesheet">
+<link href="./css/font-awesome.css" rel="stylesheet">
+<link href="./css/zipper.css" rel="stylesheet">
 </head>
 <body>
 	<div class="wrap">
@@ -21,36 +21,39 @@
 		<main class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<p><strong>Zipper</strong> offers a simple, modern and easy to use fluent api for creating and unpacking zip archives.</p>
-				<p>See the examples below</p>
-				<br />
+				<p><span class="zipper">Zipper</span> offers a simple, modern fluent style java utility classes for creating and unpacking zip archives.</p>
+				<br>
+				<p>See the examples below for usage</p>
 				<p>Unzip archive to current directory</p>
-				<pre>Unzipper.archive("path/to/archive.zip").unzip();</pre>
+				<pre><code>Unzipper.archive("path/to/archive.zip").unzip();</code></pre>
 				<p>Unzip archive to specified directory</p>
-				<pre>Unzipper.archive("path/to/archive.zip").to("/output/directory").unzip();</pre>
+				<pre><code>Unzipper.archive("path/to/archive.zip").to("/output/directory").unzip();</code></pre>
 				<p>Create an archive from specified directory</p>
-				<pre>Zipper.archive("path/to/archive.zip").directory("/a/directory").zip();</pre>
+				<pre><code>Zipper.archive("path/to/archive.zip").directory("/a/directory").zip();</code></pre>
 				<p>Create an archive from specified directories</p>
-				<pre>Zipper.archive("path/to/archive.zip").directories("/tmp", "/opt").zip();</pre>
+				<pre><code>Zipper.archive("path/to/archive.zip").directories("/tmp", "/opt").zip();</code></pre>
 				<p>Create an archive from specified file</p>
-				<pre>Zipper.archive("path/to/archive.zip").file("/tmp/myfile").unzip();</pre>
+				<pre><code>Zipper.archive("path/to/archive.zip").file("/tmp/myfile").unzip();</code></pre>
 			</div>
-			<div class="asside col-md-4 well">
-				<h1>Download</h1>
-				<h2>Maven</h2>
-				<p>Add the following dependency to you project pom.xml dependencies section</p>
-				<pre class="code">&lt;dependency&gt;
+			<div class="asside col-md-4">
+				<div class="well">
+					<h1>Download</h1>
+					<p><strong>Zipper</strong> is Licensed under <strong>Apache Version 2</strong> and is available to download via the following channels:</p>
+					<h2>Maven</h2>
+					<p>Add the following dependency to you project pom.xml dependencies section</p>
+					<pre class="code">&lt;dependency&gt;
     &lt;groupId&gt;uk.co.a1dutch.zipper&lt;/groupId&gt;
     &lt;artifactId&gt;zipper&lt;/artifactId&gt;
     &lt;version&gt;${project.version}&lt;/version&gt;
 &lt;/dependency&gt;</pre>
-				<h2>Offline Distribution</h2>
-				<p>Download an offline distribution, containing all the required jars and documentation.</p>
-				<a class="download btn btn-lg btn-block btn-success" 
-					href="http://search.maven.org/remotecontent?filepath=uk/co/a1dutch/zipper/zipper/${project.version}/zipper-${project.version}.jar">
-					<i class="fa fa-4x fa-cloud-download"></i><span>Download<br>Offline Distribution
-					</span>
-				</a>
+					<h2>Offline Distribution</h2>
+					<p>Download an offline distribution, containing all the required jars and documentation.</p>
+					<a class="download btn btn-lg btn-block btn-success" 
+						href="http://search.maven.org/remotecontent?filepath=uk/co/a1dutch/zipper/zipper/${project.version}/zipper-${project.version}.jar">
+						<i class="fa fa-4x fa-cloud-download"></i><span>Download<br>Offline Distribution
+						</span>
+					</a>
+				</div>
 			</div>
 		</div>
 		</main>
@@ -74,16 +77,16 @@
 			</div>
 		</div>
 	</footer>
-	<script src="js/jqueryjs"></script>
-	<script src="js/highlight.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-49231901-1', 'a1dutch.co.uk');
-  ga('send', 'pageview');
+	<script type="text/javascript" src="./js/jquery.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.js"></script>
+	<script type="text/javascript" src="./js/highlight.js"></script>
+	<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+	<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-49231901-1', 'a1dutch.co.uk');
+ga('send', 'pageview');
 </script>
 </body>
 </html>
