@@ -109,31 +109,32 @@ public class Unzipper {
     public void unzip() {
         try {
             log.info("unzipping archive: {} into {}", archive, outputDirectory);
-            ZipFile zip = new ZipFile(archive);
-            for (Enumeration<? extends ZipEntry> elements = zip.entries(); elements.hasMoreElements();) {
-                ZipEntry entry = elements.nextElement();
+            try (ZipFile zip = new ZipFile(archive)) {
+                for (Enumeration<? extends ZipEntry> elements = zip.entries(); elements.hasMoreElements();) {
+                    ZipEntry entry = elements.nextElement();
 
-                String outputName = outputDirectory + "/" + entry.getName();
-                if (log.isDebugEnabled()) {
-                    log.debug("unzipping entry: {}", entry.getName());
-                }
+                    String outputName = outputDirectory + "/" + entry.getName();
+                    if (log.isDebugEnabled()) {
+                        log.debug("unzipping entry: {}", entry.getName());
+                    }
 
-                if (entry.isDirectory()) {
-                    new File(outputName).mkdirs();
-                    continue;
-                }
+                    if (entry.isDirectory()) {
+                        new File(outputName).mkdirs();
+                        continue;
+                    }
 
-                try (BufferedInputStream bis = new BufferedInputStream(zip.getInputStream(entry));
-                        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(outputName)))) {
-                    byte[] buffer = new byte[1024];
-                    int read = 0;
-                    while ((read = bis.read(buffer)) != -1) {
-                        bos.write(buffer, 0, read);
+                    try (BufferedInputStream bis = new BufferedInputStream(zip.getInputStream(entry));
+                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(
+                                    outputName)))) {
+                        byte[] buffer = new byte[1024];
+                        int read = 0;
+                        while ((read = bis.read(buffer)) != -1) {
+                            bos.write(buffer, 0, read);
+                        }
                     }
                 }
+                log.info("unzipped {} entries", zip.size());
             }
-            log.info("unzipped {} entries", zip.size());
-            zip.close();
         } catch (IOException e) {
             log.error("failed unzipping archive, {}", e.getMessage());
             throw new UnzipperRuntimeException("Failed to unzip archive", e);
