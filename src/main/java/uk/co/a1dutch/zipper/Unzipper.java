@@ -118,14 +118,16 @@ public class Unzipper {
                         log.debug("unzipping entry: {}", entry.getName());
                     }
 
+                    File output = new File(outputName);
                     if (entry.isDirectory()) {
-                        new File(outputName).mkdirs();
+                        output.mkdirs();
                         continue;
+                    } else {
+                        output.getParentFile().mkdirs();
                     }
 
                     try (BufferedInputStream bis = new BufferedInputStream(zip.getInputStream(entry));
-                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(
-                                    outputName)))) {
+                            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(output))) {
                         byte[] buffer = new byte[1024];
                         int read = 0;
                         while ((read = bis.read(buffer)) != -1) {
